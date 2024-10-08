@@ -4,6 +4,7 @@ import home_bg from "./../Images/home_bg.jpg";
 import "./../../node_modules/bootstrap/dist/js/bootstrap.min.js";
 import axios from "axios";
 import Flightdetails from "../Routing/Flightdetails.jsx";
+// import env from "env";
 
 const Search = () => {
   // const [search, setSearch] = useState({
@@ -18,17 +19,23 @@ const Search = () => {
   const [arrival, setArrival] = useState("");
   const [onbound, setOnbound] = useState("");
   const [flightData, setFlightData] = useState("");
+  // console.log("API Key:", process.env.REACT_APP_SECRET_KEY);
+
+  // const apiKey = process.env.REACT_APP_SECRET_KEY;
 
   const myFunc = async () => {
+    // console.log("API Key:", import.meta.env.VITE_API_SECRET_KEY);
     try {
       const resp = await axios.get(
-        `https://serpapi.com/search.json?engine=google_flights&departure_id=${departure}&arrival_id=${arrival}&outbound_date=${onbound}&currency=INR&stops=1&travel_class=${travel}&type=2&hl=en&api_key=b01cc8e202435a2ee97f3b6552839b7130d7615a7a4971c21fd9c90071e0748b`
+        `https://serpapi.com/search.json?engine=google_flights&departure_id=${departure}&arrival_id=${arrival}&outbound_date=${onbound}&currency=INR&stops=1&travel_class=${travel}&type=2&hl=en&api_key=${
+          import.meta.env.VITE_API_SECRET_KEY
+        }`
       );
       if (!resp.data.best_flights) {
         alert("No flights Found!");
         return;
       } else {
-        console.log(resp.data.best_flights);
+        // console.log(resp.data.best_flights);
         setFlightData(resp.data.best_flights);
       }
     } catch (error) {

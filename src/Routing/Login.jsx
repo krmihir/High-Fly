@@ -28,7 +28,7 @@ const Login = () => {
             <div className="col-12 col-md-9 col-lg-7 col-xl-6">
               <div
                 className="card mt-5"
-                style={{ borderRadius: "15px", backgroundColor: "#E9EDC9" }}
+                style={{ borderRadius: "15px", backgroundColor: "#d3d6db" }}
               >
                 <div className="card-body p-5">
                   <h2 className="text-uppercase text-center mb-5">login</h2>
